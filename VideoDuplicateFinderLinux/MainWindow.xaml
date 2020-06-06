@@ -32,7 +32,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Menu Grid.Row="0" Background="#F0F0F0">
-                        <MenuItem VerticalAlignment="Center" Command="{Binding StartScanCommand}">
+                        <MenuItem VerticalAlignment="Center" Command="{Binding StartScanCommand}" IsVisible="{Binding !IsScanning}">
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Viewbox Width="16" Height="16">
@@ -47,7 +47,7 @@
                                 </StackPanel>
                             </MenuItem.Header>
                         </MenuItem>
-                        <MenuItem Command="{Binding ResumeScanCommand}" IsVisible="{Binding IsScanning}">
+                        <MenuItem Command="{Binding ResumeScanCommand}" IsVisible="{Binding IsPaused}">
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Viewbox Width="16" Height="16">

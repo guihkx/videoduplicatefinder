@@ -98,6 +98,11 @@ namespace VideoDuplicateFinderLinux {
 			get => _ScanProgressMaxValue;
 			set => this.RaiseAndSetIfChanged(ref _ScanProgressMaxValue, value);
 		}
+		bool _IsPaused;
+		public bool IsPaused {
+			get => _IsPaused;
+			set => this.RaiseAndSetIfChanged(ref _IsPaused, value);
+		}
 
 		int _Percent = 95;
 		public int Percent {
@@ -307,6 +312,21 @@ namespace VideoDuplicateFinderLinux {
 			}
 		});
 
+		public ReactiveCommand<Unit, Unit> PauseScanCommand => ReactiveCommand.Create(() => {
+			IsPaused = true;
+			Scanner.Pause();
+		});
+
+		public ReactiveCommand<Unit, Unit> ResumeScanCommand => ReactiveCommand.Create(() => {
+			IsPaused = false;
+			Scanner.Resume();
+		});
+
+		public ReactiveCommand<Unit, Unit> StopScanCommand => ReactiveCommand.Create(() => {
+			IsScanning = false;
+			Scanner.Stop();
+			Scanner.Duplicates.Clear();
+		});
 
 		public ReactiveCommand<Unit, Unit> StartScanCommand => ReactiveCommand.CreateFromTask(async () => {
 			if (!DuplicateFinderEngine.Utils.FfFilesExist) {
