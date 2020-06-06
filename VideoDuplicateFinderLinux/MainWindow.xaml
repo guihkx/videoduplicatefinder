@@ -4,6 +4,7 @@
     xmlns:duplicateFinderEngine="clr-namespace:DuplicateFinderEngine;assembly=DuplicateFinderEngine"
     xmlns:local="clr-namespace:VideoDuplicateFinderLinux"
     xmlns:mvvm="clr-namespace:VideoDuplicateFinderLinux.MVVM.Converters"
+    x:Class="VideoDuplicateFinderLinux.MainWindow"
     Title="Video Duplicate Finder 2.0 - Cross-platform"
     Width="900"
     Height="750"
